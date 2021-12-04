@@ -1,44 +1,28 @@
 // Obtener elmentos del DOM
-let personas = JSON.parse(localStorage.getItem('personas')) || [];
-if (personas.length === 0)
-    setDatos();
-
+let donativos = JSON.parse(localStorage.getItem('donativos')) || [];
 
 function getAll() {
     return JSON.parse(localStorage.getItem('personas'));
 }
 
 // Agrego una persona a la lista
-function create(persona) {
-    if (Object.keys(persona).length === 0) {
+function create(donativo) {
+    if (Object.keys(donativo).length === 0) {
         console.log('Revise que los datos sean correctos');
     }
     else {
-        if (findPersona(persona.dni) === true) {
-            console.log('Ya existe una persona con ese DNI.');
-        }
-        else {
-            personas.push(persona);
-            localStorage.setItem('personas', JSON.stringify(personas));
-        }
+        donativos.push(donativo);
+        localStorage.setItem('donativos', JSON.stringify(donativos));
     }
 }
 
 // Encontrar persona por nombre y apellido
-function findPersona(dni) {
-    return personas.find(persona => (persona.dni == dni));
+function findDonativo(id) {
+    return donativos.find(donativo => (donativo.id === id));
 }
 
-const remove = (dni) => {
-    const persona = findPersona(dni);
-    if (persona) {
-        const index = personas.indexOf(persona);
-        personas.splice(index, 1);
-        localStorage.setItem('personas', JSON.stringify(personas));
-    }
-    else {
-        console.log(`No se encontró la persona con dni ${dni}`);
-    }
+const remove = (id) => {
+    eliminarDonativo(id);
 }
 
 

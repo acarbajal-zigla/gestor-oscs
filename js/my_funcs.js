@@ -1,8 +1,8 @@
-function renderPersonasTable() {
+function renderDonativosTable() {
     $('#tabla-personas').html('');
 
     let tableBody = document.createElement("tbody");
-    let header = ['Nombre', 'Apellido', 'Presupuesto inicial', 'Gastos', 'Presupuesto para el resto del mes', 'Monto por día (resto del mes)'];
+    let header = ['Destinatario', 'Concepto', 'Monto', 'Fecha'];
     let fila_titulos = document.createElement("tr");
 
     for (let element of header) {
@@ -27,5 +27,3 @@ function renderPersonasTable() {
     }
     $('#tabla-personas').append(tableBody);
 }
-
-

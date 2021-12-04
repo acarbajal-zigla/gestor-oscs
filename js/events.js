@@ -1,44 +1,39 @@
-$('#agregar-persona').click(function () {
-    $('#ingreso-persona').toggle();
+$('#registrar-donativo').click(function () {
+    $('#registrar-donativo').toggle();
     //Escondo los demas
-    $('#eliminar-persona').hide();
-    $('#tabla-personas').hide();
+    $('#div-login').hide()
     $("#div-tabla-datos").hide();
 });
 
+/*
 $('#eliminar-persona').click(function () {
     $('#eliminar-persona').toggle();
     //Escondo los demas
     $('#ingreso-persona').hide();
     $("#div-tabla-datos").hide();
 });
+*/
 
-$('#ver-personas').click(function () {
+$('#login-button').click(function () {
+    $('#div-login').toggle();
+});
+
+$('#ver-donativos').click(function () {
     $("#div-tabla-datos").toggle();
     //Escondo los demas
-    $('#eliminar-persona').hide();
+    $('#div-login').hide()
     $('#ingreso-persona').hide();
-    renderPersonasTable();
-
+    //renderDonativosTable();
 });
 
-// Escuchar el evento submit del formulario ppal
-$('#form-persona').submit(function (event) {
-    event.preventDefault();
+if ($('#registro-donativo').length) {
+    $('#form-donativo').submit(function (event) {
+        event.preventDefault();
+        const donativo = Donativo($('#input-destinatario').val(), $('#input-concepto').val(), $('#input-monto').val(), $('#input-fecha').val());
+        postDonativo(donativo);
+    });
+}
 
-    const dni = $('#input-dni').val();
-    const nombre = $('#input-nombre').val();
-    const apellido = $('#input-apellido').val();
-    const montoInicial = $('#input-montoInicial').val();
-    const gastosMensuales = $('#input-gastosMensuales').val();
-
-    const persona = new Persona(dni, nombre, apellido, montoInicial, gastosMensuales);
-    if (persona) {
-        create(persona);
-    }
-    $('#form-persona').trigger('reset');
-    renderPersonasTable();
-});
 
 // Escuchar el evento submit del formulario de ramocion de personas
 $('#form-eliminar-persona').submit(function (event) {
@@ -48,3 +43,13 @@ $('#form-eliminar-persona').submit(function (event) {
     $('#form-eliminar-persona').trigger('reset');
     renderPersonasTable();
 });
+
+
+$('#form-login').submit(function (event) {
+    event.preventDefault();
+    if (login($('#input-login-username').val(), $('#input-login-password').val()) !== false) {
+        $('#form-login').trigger('reset');
+        $('#div-login').hide();
+    }
+});
+//login();
