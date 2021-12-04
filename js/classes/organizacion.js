@@ -1,9 +1,10 @@
 class Organizacion {
-    constructor(cuit, razonSocial, domicilioLegal, nomina) {
-        this.cuit = cuit;
-        this.razonSocial = razonSocial;
-        this.domicilioLegal = domicilioLegal;
-        this.nomina = nomina;
+    constructor(id_fiscal, nombre, razon_social, pais, admin) {
+        this.id_fiscal = id_fiscal;
+        this.nombre = razonSocial;
+        this.razon_social = domicilioLegal;
+        this.pais = nomina;
+        this.admin = admin;
     }
 }
 
