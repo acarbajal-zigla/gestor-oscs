@@ -1,18 +1,9 @@
 $('#registrar-donativo').click(function () {
-    $('#registrar-donativo').toggle();
+    $('#registro-donativo').toggle();
     //Escondo los demas
     $('#div-login').hide()
     $("#div-tabla-datos").hide();
 });
-
-/*
-$('#eliminar-persona').click(function () {
-    $('#eliminar-persona').toggle();
-    //Escondo los demas
-    $('#ingreso-persona').hide();
-    $("#div-tabla-datos").hide();
-});
-*/
 
 $('#login-button').click(function () {
     $('#div-login').toggle();
