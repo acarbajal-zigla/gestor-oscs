@@ -12,7 +12,7 @@ $('#login-button').click(function () {
 $('#ver-donativos').click(function () {
     $("#div-tabla-datos").toggle();
     //Escondo los demas
-    $('#div-login').hide()
+    $('#div-login').hide();
     $('#ingreso-persona').hide();
     //renderDonativosTable();
 });
@@ -20,7 +20,11 @@ $('#ver-donativos').click(function () {
 if ($('#registro-donativo').length) {
     $('#form-donativo').submit(function (event) {
         event.preventDefault();
-        const donativo = Donativo($('#input-destinatario').val(), $('#input-concepto').val(), $('#input-monto').val(), $('#input-fecha').val());
+        console.log($('#input-destinatario').val());
+        const donativo = new Donativo($('#input-destinatario').val(), 
+                                      $('#input-concepto').val(), 
+                                      $('#input-monto').val(), 
+                                      $('#input-fecha').val());
         postDonativo(donativo);
     });
 }

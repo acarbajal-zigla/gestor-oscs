@@ -14,18 +14,18 @@ function setDatos() {
     }
 }
 
-function postDonativo(donativo) {
+function postDonativo(donativo, token) {
     $.ajax({
         type: "POST",
         url: `http://localhost:${PORT}/donativos/registro`,
-        data: JSON.stringify(donativo),
+        data: {username:token, data:JSON.stringify(donativo)},
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
             alert(msg.d);
         },
         error: function (msg) {
-            alert('error');
+            alert('Error al cargar el donativo.');
         }
     })
 }
