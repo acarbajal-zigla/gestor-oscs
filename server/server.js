@@ -76,7 +76,6 @@ app.get('/users', (req, res) => {
             res.status(500).send();
         }
         res.status(200).send(JSON.stringify(results));
-        //res.render('users', { 'title': 'users', 'result': results[0] });
     });
 });
 
