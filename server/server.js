@@ -53,8 +53,20 @@ app.post('/donativos/registro', authenticateToken, (req, res) => {
     res.json()
 })
 
-app.get('/donativos/registro', authenticateToken, (req, res) => {
-    res.sendFile('views/registro_donativos.html', { root: __dirname });
+app.get('/donativos/', authenticateToken, (req, res) => {
+    const username = posts.filter(post => post.name === req.username)
+    if (username) {
+        let resultado = ''
+        conn.query(`SELECT * FROM donativos WHERE donante=${username};`, function (err, results, fields) {
+            if (err){
+                console.log("[mysql error]", err);
+                res.status(500).send();
+            }
+            else
+                res.status(200).send(JSON.stringify(results));
+        });
+    }
+    res.json()
 });
 
 app.get('/users', (req, res) => {
